@@ -96,7 +96,7 @@ namespace CircleHeatmapAnalysis
                     else if ( match.MapName.ToString().ToLower() == "erangel" )
                         ErangelPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
 
-                    Console.WriteLine( z );
+                    Console.WriteLine( z + i );
                 }
                 i += TakeNum;
                 System.Threading.Thread.Sleep( 61000 );
