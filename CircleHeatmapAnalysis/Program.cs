@@ -41,9 +41,9 @@ namespace CircleHeatmapAnalysis
             var matchService = new Pubg.Net.PubgMatchService( ApiKey );
             var telemetryService = new PubgTelemetryService();
             telemetryService.ApiKey = ApiKey;
-            PubgMatch match;
-            IEnumerable<PubgTelemetryEvent> telemetryData;
-            LogGameStatePeriodic LastGameState;
+            //PubgMatch match;
+            //IEnumerable<PubgTelemetryEvent> telemetryData;
+            //LogGameStatePeriodic LastGameState;
 
             List<Point> MiramarPoints = new List<Point>();
             List<Point> ErangelPoints = new List<Point>();
@@ -53,32 +53,53 @@ namespace CircleHeatmapAnalysis
             // Take this per loop
             int TakeNum = 50;
             // Go until this record
-            int GoUntil = 500;
+            int GoUntil = 1000;
 
             while ( i < GoUntil )
             {
-                Parallel.ForEach( 
-                    // Skip the first i that have already been taken, and take the next TakeNum amount
-                    matches.data.relationships.matches.data.Skip( i ).Take( TakeNum ),
-                    new ParallelOptions { MaxDegreeOfParallelism = 10 }, m =>
-                    {
-                        // Get the match to find the telemetry link
-                        match = matchService.GetMatch( PubgRegion.PCNorthAmerica, m.id );
+                //Parallel.ForEach(
+                //    // Skip the first i that have already been taken, and take the next TakeNum amount
+                //    matches.data.relationships.matches.data.Skip( i ).Take( TakeNum ),
+                //    new ParallelOptions { MaxDegreeOfParallelism = 10 }, m =>
+                //    {
+                //        // Get the match to find the telemetry link
+                //        match = matchService.GetMatch( PubgRegion.PCNorthAmerica, m.id );
 
-                        // Get the telemetry data from the match
-                        telemetryData = telemetryService.GetTelemetry( PubgRegion.PCNorthAmerica, match.Assets.FirstOrDefault() );
+                //        // Get the telemetry data from the match
+                //        telemetryData = telemetryService.GetTelemetry( PubgRegion.PCNorthAmerica, match.Assets.FirstOrDefault() );
 
-                        // Find the last game state to record the circle position
-                        LastGameState = telemetryData.OfType<LogGameStatePeriodic>().OrderBy( x => x.GameState.SafetyZoneRadius ).FirstOrDefault();
+                //        // Find the last game state to record the circle position
+                //        LastGameState = telemetryData.OfType<LogGameStatePeriodic>().OrderBy( x => x.GameState.SafetyZoneRadius ).FirstOrDefault();
 
-                        if( match.MapName.ToString().ToLower() == "miramar" )
-                            MiramarPoints.Add( new Point {  X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
-                        else if ( match.MapName.ToString().ToLower() == "erangel" )
-                            ErangelPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
-                    } );
-                Console.WriteLine( i + " to " + (i + TakeNum ) + " DONE" );
+                //        if ( match.MapName.ToString().ToLower() == "miramar" )
+                //            MiramarPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
+                //        else if ( match.MapName.ToString().ToLower() == "erangel" )
+                //            ErangelPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
+                //    } );
+                //Console.WriteLine( i + " to " + ( i + TakeNum ) + " DONE" );
+                //i += TakeNum;
+
+                for(int z = 0; z < TakeNum; z++ )
+                {
+                    var matchesList = matches.data.relationships.matches.data.Skip( i ).Take( TakeNum ).ToList();
+
+                    var match = matchService.GetMatch( PubgRegion.PCNorthAmerica, matchesList[z].id );
+
+                    // Get the telemetry data from the match
+                    var telemetryData = telemetryService.GetTelemetry( PubgRegion.PCNorthAmerica, match.Assets.FirstOrDefault() );
+
+                    // Find the last game state to record the circle position
+                    var LastGameState = telemetryData.OfType<LogGameStatePeriodic>().OrderBy( x => x.GameState.SafetyZoneRadius ).FirstOrDefault();
+
+                    if ( match.MapName.ToString().ToLower() == "miramar" )
+                        MiramarPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
+                    else if ( match.MapName.ToString().ToLower() == "erangel" )
+                        ErangelPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
+
+                    Console.WriteLine( z );
+                }
                 i += TakeNum;
-                System.Threading.Thread.Sleep( 61000 );              
+                System.Threading.Thread.Sleep( 61000 );
             }
 
             string MiramarJson = JsonConvert.SerializeObject( MiramarPoints );
