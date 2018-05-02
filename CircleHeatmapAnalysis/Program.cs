@@ -53,7 +53,7 @@ namespace CircleHeatmapAnalysis
             // Take this per loop
             int TakeNum = 50;
             // Go until this record
-            int GoUntil = 250;
+            int GoUntil = 500;
 
             while ( i < GoUntil )
             {
