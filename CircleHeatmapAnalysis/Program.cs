@@ -72,9 +72,9 @@ namespace CircleHeatmapAnalysis
                         LastGameState = telemetryData.OfType<LogGameStatePeriodic>().OrderBy( x => x.GameState.SafetyZoneRadius ).FirstOrDefault();
 
                         if( match.MapName.ToString().ToLower() == "miramar" )
-                            MiramarPoints.Add( new Point {  X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y } );
+                            MiramarPoints.Add( new Point {  X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
                         else if ( match.MapName.ToString().ToLower() == "erangel" )
-                            ErangelPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y } );
+                            ErangelPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
                     } );
                 Console.WriteLine( i + " to " + (i + TakeNum ) + " DONE" );
                 i += TakeNum;
@@ -90,6 +90,7 @@ namespace CircleHeatmapAnalysis
 
         public class Point
         {
+            public string MatchId { get; set; }
             public double X { get; set; }
             public double Y { get; set; }
         }
