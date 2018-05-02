@@ -109,3 +109,16 @@ C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\CircleHeatmapAnalysis\obj\Debug\
 C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\CircleHeatmapAnalysis\bin\Debug\Devy.Helpers.dll
 C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\CircleHeatmapAnalysis\bin\Debug\Devy.Helpers.pdb
 C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\CircleHeatmapAnalysis\bin\Debug\Pubg.Net.pdb
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\obj\Debug\CircleHeatmapAnalysis.csproj.CoreCompileInputs.cache
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\CircleHeatmapAnalysis.exe.config
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\CircleHeatmapAnalysis.exe
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\CircleHeatmapAnalysis.pdb
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\Devy.Helpers.dll
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\JsonApiSerializer.dll
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\Newtonsoft.Json.dll
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\Devy.Helpers.pdb
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\Newtonsoft.Json.xml
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\Pubg.Net.pdb
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\obj\Debug\CircleHeatmapAnalysis.csprojResolveAssemblyReference.cache
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\obj\Debug\CircleHeatmapAnalysis.exe
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\obj\Debug\CircleHeatmapAnalysis.pdb
