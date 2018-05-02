@@ -48,12 +48,12 @@ namespace CircleHeatmapAnalysis
             List<Point> MiramarPoints = new List<Point>();
             List<Point> ErangelPoints = new List<Point>();
             
-            // Start at
-            int i = 0;
+            // Start at (will start at +1 after the number entered)
+            int i = 1000;
             // Take this per loop
             int TakeNum = 50;
             // Go until this record
-            int GoUntil = 1000;
+            int GoUntil = 2000;
 
             while ( i < GoUntil )
             {
