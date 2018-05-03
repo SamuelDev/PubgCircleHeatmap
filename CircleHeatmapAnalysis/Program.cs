@@ -79,24 +79,34 @@ namespace CircleHeatmapAnalysis
                 //Console.WriteLine( i + " to " + ( i + TakeNum ) + " DONE" );
                 //i += TakeNum;
 
+                
+
                 for(int z = 0; z < TakeNum; z++ )
                 {
-                    var matchesList = matches.data.relationships.matches.data.Skip( i ).Take( TakeNum ).ToList();
+                    try
+                    {
+                        var matchesList = matches.data.relationships.matches.data.Skip( i ).Take( TakeNum ).ToList();
 
-                    var match = matchService.GetMatch( PubgRegion.PCNorthAmerica, matchesList[z].id );
+                        var match = matchService.GetMatch( PubgRegion.PCNorthAmerica, matchesList[z].id );
 
-                    // Get the telemetry data from the match
-                    var telemetryData = telemetryService.GetTelemetry( PubgRegion.PCNorthAmerica, match.Assets.FirstOrDefault() );
+                        // Get the telemetry data from the match
+                        var telemetryData = telemetryService.GetTelemetry( PubgRegion.PCNorthAmerica, match.Assets.FirstOrDefault() );
 
-                    // Find the last game state to record the circle position
-                    var LastGameState = telemetryData.OfType<LogGameStatePeriodic>().OrderBy( x => x.GameState.SafetyZoneRadius ).FirstOrDefault();
+                        // Find the last game state to record the circle position
+                        var LastGameState = telemetryData.OfType<LogGameStatePeriodic>().OrderBy( x => x.GameState.SafetyZoneRadius ).FirstOrDefault();
 
-                    if ( match.MapName.ToString().ToLower() == "miramar" )
-                        MiramarPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
-                    else if ( match.MapName.ToString().ToLower() == "erangel" )
-                        ErangelPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
+                        if ( match.MapName.ToString().ToLower() == "miramar" )
+                            MiramarPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
+                        else if ( match.MapName.ToString().ToLower() == "erangel" )
+                            ErangelPoints.Add( new Point { X = LastGameState.GameState.SafetyZonePosition.X, Y = LastGameState.GameState.SafetyZonePosition.Y, MatchId = match.Id } );
 
-                    Console.WriteLine( z + i );
+                        Console.WriteLine( z + i );
+                    }
+                    catch(Exception e )
+                    {
+                        // Eat the exception
+                        // Dont care why it happened
+                    }
                 }
                 i += TakeNum;
                 System.Threading.Thread.Sleep( 61000 );
