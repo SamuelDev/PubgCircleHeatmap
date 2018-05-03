@@ -35,16 +35,18 @@
     <Reference Include="Devy.Helpers">
       <HintPath>G:\Projects\Devy.Helpers\Devy.Helpers\bin\Debug\Devy.Helpers.dll</HintPath>
     </Reference>
-    <Reference Include="JsonApiSerializer, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\JsonApiSerializer.1.2.0\lib\net45\JsonApiSerializer.dll</HintPath>
+    <Reference Include="JsonApiSerializer, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JsonApiSerializer.1.3.1\lib\net45\JsonApiSerializer.dll</HintPath>
     </Reference>
     <Reference Include="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Pubg.Net, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\pubg-dotnet\src\pubg-dotnet\bin\Debug\netstandard2.0\Pubg.Net.dll</HintPath>
+    <Reference Include="Pubg.Net, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Pubg-DotNet.1.3.0\lib\netstandard2.0\Pubg.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="PUBGLibrary, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PUBGLibrary.1.0.9\lib\netstandard2.0\PUBGLibrary.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

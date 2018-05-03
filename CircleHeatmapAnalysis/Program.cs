@@ -19,6 +19,15 @@ namespace CircleHeatmapAnalysis
             string ApiKey = "";
             ApiKey = File.ReadAllText( @"C:\Projects\CircleHeatmap\APIKey.txt" );
 
+            PUBGLibrary.API.API api = new PUBGLibrary.API.API(ApiKey);
+            List<string> matchSampleList = api.FetchMatchSamples();
+        }
+
+        public void GetFinalCircleData()
+        {
+            string ApiKey = "";
+            ApiKey = File.ReadAllText( @"C:\Projects\CircleHeatmap\APIKey.txt" );
+
             Rootobject matches;
             using ( StreamReader reader = new StreamReader( @"C:\Projects\CircleHeatmap\SampleMatches.json" ) )
             {
@@ -36,7 +45,7 @@ namespace CircleHeatmapAnalysis
             var telemetry = telemetryService.GetTelemetry( PubgRegion.PCNorthAmerica, test.Assets.FirstOrDefault() );
 
             var LastCircleData = telemetry.OfType<LogGameStatePeriodic>().OrderBy(x=>x.GameState.SafetyZoneRadius);*/
-            
+
 
             var matchService = new Pubg.Net.PubgMatchService( ApiKey );
             var telemetryService = new PubgTelemetryService();
@@ -47,13 +56,13 @@ namespace CircleHeatmapAnalysis
 
             List<Point> MiramarPoints = new List<Point>();
             List<Point> ErangelPoints = new List<Point>();
-            
+
             // Start at (will start at +1 after the number entered)
-            int i = 1000;
+            int i = 4000;
             // Take this per loop
             int TakeNum = 50;
             // Go until this record
-            int GoUntil = 2000;
+            int GoUntil = 12000;
 
             while ( i < GoUntil )
             {
@@ -79,9 +88,9 @@ namespace CircleHeatmapAnalysis
                 //Console.WriteLine( i + " to " + ( i + TakeNum ) + " DONE" );
                 //i += TakeNum;
 
-                
 
-                for(int z = 0; z < TakeNum; z++ )
+
+                for ( int z = 0; z < TakeNum; z++ )
                 {
                     try
                     {
@@ -102,15 +111,19 @@ namespace CircleHeatmapAnalysis
 
                         Console.WriteLine( z + i );
                     }
-                    catch(Exception e )
+                    catch ( Exception e )
                     {
                         // Eat the exception
                         // Dont care why it happened
+                        System.Threading.Thread.Sleep( 20000 );
                     }
+                    break;
                 }
                 i += TakeNum;
-                System.Threading.Thread.Sleep( 61000 );
+                break;
+                //System.Threading.Thread.Sleep( 61000 );
             }
+
 
             string MiramarJson = JsonConvert.SerializeObject( MiramarPoints );
             string ErangelJson = JsonConvert.SerializeObject( ErangelPoints );

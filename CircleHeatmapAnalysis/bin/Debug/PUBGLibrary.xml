@@ -1,0 +1,1181 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PUBGLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:PUBGLibrary.API.API">
+            <summary>
+            The base class for the PUBG API
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.API.APIKey">
+            <summary>
+            The API key used during requests
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.API.API.#ctor(System.String)">
+            <summary>
+            The base class for the PUBG API
+            </summary>
+            <param name="API_Key">The API key to use during requests</param>
+        </member>
+        <member name="M:PUBGLibrary.API.API.RequestMatch(System.String,PUBGLibrary.API.PlatformRegionShard)">
+            <summary>
+            Request a single match using a MatchID and Platform-Region Shard that the match was played in
+            </summary>
+            <param name="MatchID">The MatchID to look up</param>
+            <param name="platformRegionShard">The region the match was played in</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.API.RequestMatch(System.String)">
+            <summary>
+            Request a single match using a PUBG replay
+            </summary>
+            <param name="ReplayDirectoryPath">The replay to look up</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.API.RequestMatch(PUBGLibrary.Replay.Replay)">
+            <summary>
+            Request a single match using the Replay class
+            </summary>
+            <param name="replay">The replay to read</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.API.RequestMatches(System.Collections.Generic.List{PUBGLibrary.Replay.Replay},System.Int32)">
+            <summary>
+            Requests multiple matches from a list of replay files
+            </summary>
+            <param name="replays">Replays to request</param>
+            <param name="RateLimitPerMintue">The ratelimit on the API key given (How many times we can ask the PUBG API about a match)</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.API.RequestUser(System.String,PUBGLibrary.API.PlatformRegionShard,PUBGLibrary.API.UserSearchType,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Request a single user or multipe users on the same platform and region
+            </summary>
+            <param name="PlayerID1">The first user to request</param>
+            <param name="PlayerID2">The second user to request</param>
+            <param name="PlayerID3">The thrid user to request</param>
+            <param name="PlayerID4">The forth user to request</param>
+            <param name="PlayerID5">The fifth user to request</param>
+            <param name="PlayerID6">The sixth user to request</param>
+            <param name="platformRegionShard">The Platform-Region shard to search in</param>
+            <param name="userSearchType">The type of ID to search by</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.API.WatchUser(System.String,PUBGLibrary.API.PlatformRegionShard,PUBGLibrary.API.UserSearchType,System.String,System.String,System.String)">
+            <summary>
+            Watch a single user or multipe users on the same platform and region
+            </summary>
+            <param name="PlayerID1">The first user to watch</param>
+            <param name="PlayerID2">The second user to watch</param>
+            <param name="PlayerID3">The thrid user to watch</param>
+            <param name="PlayerID4">The forth user to watch</param>
+            <param name="PlayerID5">The fifth user to watch</param>
+            <param name="PlayerID6">The sixth user to watch</param>
+            <param name="platformRegionShard">That platform to watch</param>
+            <param name="userSearchType">The </param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.API.GetEnumDescription(System.Enum)">
+            <summary>
+            Gets the description tag from Enums
+            </summary>
+            <param name="value">The enum value you want to read</param>
+            <returns></returns>
+        </member>
+        <member name="T:PUBGLibrary.API.PlatformRegionShard">
+            <summary>
+            The Platform and Region varibles
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_NA">
+            <summary>
+            PC North America
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_EU">
+            <summary>
+            PC Europe
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_KR">
+            <summary>
+            PC Korea
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_JP">
+            <summary>
+            PC Japan
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_AS">
+            <summary>
+            PC Asia
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_OC">
+            <summary>
+            PC Oceania
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_SA">
+            <summary>
+            PC South and Central Amercia
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_SEA">
+            <summary>
+            PC South East Asia
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.PC_KAKAO">
+            <summary>
+            Alternative platform to Steam (https://www.kakaogames.com/)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.Xbox_NA">
+            <summary>
+            Xbox North America
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.Xbox_EU">
+            <summary>
+            Xbox Europe
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.Xbox_AS">
+            <summary>
+            Xbox Asia
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlatformRegionShard.Xbox_OC">
+            <summary>
+            Xbox Oceania
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.APIMatch">
+            <summary>
+            The match data requested
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.BaseJSON">
+            <summary>
+            The bare JSON of the request;
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.CreatedAt">
+            <summary>
+            Time of match completion
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.PlayerList">
+            <summary>
+            List of players with stats included
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.Duration">
+            <summary>
+            Length of match in seconds
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.Gamemode">
+            <summary>
+            The gamemode played
+            </summary>
+            <remarks>Might be the same as the Gamemode enum</remarks>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.MapName">
+            <summary>
+            The name of the map
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.PRS_ID">
+            <summary>
+            The Platform-Region shard 
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.TeamList">
+            <summary>
+            A list of teams in the match
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIMatch.TelemetryURL">
+            <summary>
+            The direct link to the Telemetry file
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.APIRequest">
+            <summary>
+            Handles single and multi-match requests
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIRequest.Match">
+            <summary>
+            The match requested
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIRequest.Telemetry">
+            <summary>
+            The telemetry data from the requested match
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIRequest.exception">
+            <summary>
+            If a exception happens during the request, it will be stored in this varible
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.API.APIRequest.RequestSingleMatch(System.String,System.String,System.String)">
+            <summary>
+            Requests a single match from the PUBG Developer API
+            </summary>
+            <param name="APIKey">The API Key to use during the request</param>
+            <param name="PlatformRegion">The platform-region of the request (xbox-na, pc-oc, etc)</param>
+            <param name="MatchID">The Match ID of the map</param>
+            <returns>If null, the request failed</returns>
+            
+        </member>
+        <member name="M:PUBGLibrary.API.APIRequest.RequestUser(System.String,System.String,System.Collections.Generic.List{System.String},PUBGLibrary.API.UserSearchType)">
+            <summary>
+            Request a single or multiple users from the PUBG Developer API
+            </summary>
+            <param name="APIKey">The API key to use during the request</param>
+            <param name="PlatformRegion">The Platform-Region to search (i.e pc-na, xbox-eu)</param>
+            <param name="ID">The list of PUBG Names or AccountIDs to search, max is 6</param>
+            <param name="SearchType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.APIRequest.MatchPhraser(System.String)">
+            <summary>
+            Parses the match JSON string from the API
+            </summary>
+            <param name="JSONstring">The match JSON string to parse</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.APIRequest.TelemetryPhraser(System.String)">
+            <summary>
+            Parses the telemetry JSON string from the API
+            </summary>
+            <param name="JSONstring">The telemetry JSON string to parse</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.APIRequest.UserPhraser(System.String)">
+            <summary>
+            Pharses user data from JSON from the API
+            </summary>
+            <param name="JSONstring"></param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.API.APIRequest.UserPhraser(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            Pharses user data from a JObject from the API
+            </summary>
+            <param name="userdata">JObject to pharse</param>
+            <returns></returns>
+        </member>
+        <member name="T:PUBGLibrary.API.UserSearchType">
+            <summary>
+            The type of search to perform when doing a multiuser search
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.UserSearchType.PUBGName">
+            <summary>
+            Searching using PUBG names
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.UserSearchType.AccountID">
+            <summary>
+            Searching using
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.APIStatus">
+            <summary>
+            Gets the status of the API Service
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIStatus.bIsOnline">
+            <summary>
+            Toggles depending on if the API is online
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIStatus.error">
+            <summary>
+            Holds web errors for direct viewing
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIStatus.type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIStatus.ID">
+            <summary>
+            The ID of the API (always pubg-api)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIStatus.APIVersionRelease">
+            <summary>
+            The most recent release date of the API
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIStatus.Version">
+            <summary>
+            The version of the API service
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.API.APIStatus.#ctor">
+            <summary>
+            Gets the status of the API
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.APITeam">
+            <summary>
+            Team structure from the match file returned by the API
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITeam.rank">
+            <summary>
+            The rank the team got in the match (i.e 3rd in a match)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITeam.TeamID">
+            <summary>
+            The team ID referenced in the Replay file (Tab menu of when watch a replay)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITeam.Won">
+            <summary>
+            If the team won, this is true
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITeam.TeammateIDList">
+            <summary>
+            The list of teammates int he team, based on a GUID also contained in the player
+            </summary>
+        </member>
+        <member name="P:PUBGLibrary.API.APITeam.TeamSize">
+            <summary>
+            The size of the team
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.APITelemetry">
+            <summary>
+            The structure of the Telemetry file retuend by the API
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.BaseJSON">
+            <summary>
+            The bare JSON request
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogMatchDefinition">
+            <summary>
+            Basic match information about the creation of the match
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogMatchStart">
+            <summary>
+            Information about the match start, including a list of players, the weather type, etc
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogMatchEnd">
+            <summary>
+            Information about the match end, including a list of players, and the time
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogPlayerCreateList">
+            <summary>
+            A list of all the players created by the server at match start, including Position, health, and ranking of the player
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogCarePackageLandList">
+            <summary>
+            A list of all air drops that land including the carpackage model, Position, and all items in the air drop
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogCarePackageSpawnList">
+            <summary>
+            A list of all air drops that spawn including the carpackage model, Position, and all items in the air drop
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogPlayerLoginList">
+            <summary>
+            A list of all attempts by players to join the server
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogItemAttachList">
+            <summary>
+            A list of all times a ttachment is being attached
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogItemDropList">
+            <summary>
+            A list of all times a item is dropped
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APITelemetry.LogItemDetachList">
+            <summary>
+            A list of all times a attachment is being deattached
+            </summary>
+        </member>
+        <member name="P:PUBGLibrary.API.APITelemetry.PlayerSpecificLogList">
+            <summary>
+            Creates a list of players with events attached to them
+            </summary>
+            <remarks>Goes through every list and searches for data from the AccountID</remarks>
+        </member>
+        <member name="M:PUBGLibrary.API.APITelemetry.GetPlayerSpecificLog(System.String,PUBGLibrary.API.SearchType)">
+            <summary>
+            Search the PlayerSpecificLog list for a Account ID or PUBG Name
+            </summary>
+            <param name="input">The AccountID (i.e, account.g8743hfb31023bhf13bbuf3190321fwu) or PUBGName of the player to search for </param>
+            <param name="searchType">The type of search to perform</param>
+            <returns>A PlayerSpecificLog class to call associated lists with</returns>
+        </member>
+        <member name="T:PUBGLibrary.API.SearchType">
+            <summary>
+            The search type to use when searching for player data
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.SearchType.AccountID">
+            <summary>
+            Search by account ID (i.e, account.g8743hfb31023bhf13bbuf3190321fwu)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.SearchType.PUBGName">
+            <summary>
+            Search by PUBG name (i.e epickitten)
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.PlayerSpecificLog">
+            <summary>
+            All data related to a single player
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.PUBGName">
+            <summary>
+            The player's PUBG name
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.AccountID">
+            <summary>
+            The player's account ID
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogPlayerLoginList">
+            <summary>
+            When the player logs into the server
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogPlayerCreateList">
+            <summary>
+            When the server actually creates the player in game
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.logItemAttachList">
+            <summary>
+            When the player attaches a attachment to a gun
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.logPlayerAttackList">
+            <summary>
+            When the player damages anything that isnt another player
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogPlayerKillList">
+            <summary>
+            When the player kills another player
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogPlayerPositionList">
+            <summary>
+            The position of the player every 10 seconds
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogPlayerLogoutList">
+            <summary>
+            When the player logs out
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogPlayerTakeDamageList">
+            <summary>
+            When the player hurts another player
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogVehicleDestroyList">
+            <summary>
+            When the player causes a vehicle to explode
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogVehicleLeaveList">
+            <summary>
+            When the player leaves a vehicle (this includes the parachute and plane)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogVehicleRideList">
+            <summary>
+            When the player gets in a vehicle (this includes the parachute and plane)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogItemUseList">
+            <summary>
+            When the player uses a item (First Aid Kit, etc)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogItemUnequipList">
+            <summary>
+            When the player unequips a item 
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogItemPickupList">
+            <summary>
+            When the player picks up a item
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogItemEquipList">
+            <summary>
+            When the player equips a item (guns, smokes, etc)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogItemDropList">
+            <summary>
+            When the player drops a item
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.PlayerSpecificLog.LogItemDetachList">
+            <summary>
+            When the player removes a attachment
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.LogItemDrop">
+             
+             
+             Events
+             
+            
+        </member>
+        <member name="T:PUBGLibrary.API.LogItemDetach">
+            <summary>
+            When a player removes a attachment from a gun
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogItemDetach.Player">
+            <summary>
+            The player performing the action
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogItemDetach.ParentItem">
+            <summary>
+            The item child item is being removed from (usually a gun)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogItemDetach.ChildItem">
+            <summary>
+            The item being removed from the parent item (i.e Item_Attach_Weapon_Magazine_QuickDraw_Large_C, Item_Attach_Weapon_Upper_CQBSS_C, etc)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogItemDetach.DateTime">
+            <summary>
+            When the action was performed
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.LogItemAttach">
+            <summary>
+            When a player adds a attachment to a gun
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogItemAttach.Player">
+            <summary>
+            The player performing the action
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogItemAttach.ParentItem">
+            <summary>
+            The item child item is attaching to (usually a gun)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogItemAttach.ChildItem">
+            <summary>
+            The item being attached to the parent item (i.e Item_Attach_Weapon_Magazine_QuickDraw_Large_C, Item_Attach_Weapon_Upper_CQBSS_C, etc)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogItemAttach.DateTime">
+            <summary>
+            When the action was performed
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.LogMatchEnd">
+            <summary>
+            Information about the match end, including a list of players, and the time
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.LogPlayerLogin.Result">
+            <summary>
+            If the login failed or not
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.LogMatchStart">
+            <summary>
+            Information about the match start, including a list of player, the weather type, etc
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.LogPlayerCreate">
+            <summary>
+            A player created by the server at match start, including Position, health, and ranking of the player
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.LogMatchDefinition">
+            <summary>
+            Basic match information about the creation of the match
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.LogCarePackageLand">
+            <summary>
+            Information about air drops loaction and items in the drop
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.LogCarePackageSpawn">
+            <summary>
+            Information about air drops loaction and items in the drop
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.API.Damage">
+            
+             
+             Sub Event Classes
+             
+             
+        </member>
+        <member name="F:PUBGLibrary.API.Item.ItemID">
+            <summary>
+            The name of the item (i.e Item_Attach_Weapon_Magazine_QuickDraw_Large_C, Item_Attach_Weapon_Upper_CQBSS_C, etc)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.Item.StackCount">
+            <summary>
+            The amount in the stack
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.Item.Categroy">
+            <summary>
+            The type of item (i.e Attachment, Weapon, Use, etc)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.Item.SubCategroy">
+            <summary>
+            The sub categroy of the item (i.e Heal, None, etc)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.Item.AttachedItems">
+            <summary>
+            A list of already attached items
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.API.Position.DistanceTo(PUBGLibrary.API.Position)">
+            <summary>
+            Measures the distance between this position and position in the parameters 
+            </summary>
+            <param name="ToPosition">The position to measure to</param>
+            <returns>The distance between X and Y</returns>
+        </member>
+        <member name="T:PUBGLibrary.API.AttackType">
+            
+            
+            
+            
+            REMEMBER TO ADD STRING TO VALUE TO STRING
+            
+            
+            
+        </member>
+        <member name="T:PUBGLibrary.API.APIUser">
+            <summary>
+            A class to hold data about requested players 
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIUser.BaseJSON">
+            <summary>
+            The base JSON of the request
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIUser.WebException">
+            <summary>
+            If a web execption happens, it will be stored here
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIUser.AccountID">
+            <summary>
+            The account ID of the requested user
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIUser.PUBGName">
+            <summary>
+            The PUBG name of the requested user
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIUser.PRS">
+            <summary>
+            The Platform-Region Shard of the requested user
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.API.APIUser.ListOfMatches">
+            <summary>
+            List of matches the requested user was in
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.API.APIWatchdog.WatchMultiUser(System.String,System.Collections.Generic.List{System.String},System.String,PUBGLibrary.API.UserSearchType)">
+            <summary>
+            Watch up to 6 users at once and trigger events when new matches are added
+            </summary>
+            <param name="APIKey">The API key to use during requests</param>
+            <param name="IDToWatch">The PUBG names or Account IDs to watch</param>
+            <param name="platformRegionShard">The region to watch</param>
+            <param name="userSearchType">Watch by either PUBG names or Account ID</param>
+        </member>
+        <member name="T:PUBGLibrary.Replay.Replay">
+            <summary>
+            Begining of the Replay class
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.Replay.Replay.Path">
+            <summary>
+            Path to the replay directory
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.Replay.Replay.#ctor(System.String)">
+            <summary>
+            Begining of the Replay class
+            </summary>
+            <param name="DirectoryPath">Path to the replay directory</param>
+        </member>
+        <member name="M:PUBGLibrary.Replay.Replay.DecryptReplaySummaryFile">
+            <summary>
+            Shifts all bytes in the file by 1 to reveal readable JSON in the newest ReplaySummary file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.Replay.Replay.DecryptReplayInfoFile">
+            <summary>
+            Shifts all bytes in the file by 1 to reveal readable JSON in the .replayinfo file
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:PUBGLibrary.Replay.Replay.Recorder">
+            <summary>
+            Gets the recording user's ReplaySummaryTeammate
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.Replay.Replay.Size">
+            <summary>
+            Gets the size of the replay
+            </summary>
+            <returns>Returns the size of the replay</returns>
+        </member>
+        <member name="P:PUBGLibrary.Replay.Replay.CustomName">
+            <summary>
+            Gets the custom name for the replay if it has one
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.Replay.Replay.CreateMatchOverview(System.String,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Creates a overview of the replay in JSON format
+            </summary>
+            <param name="file_path">The file path to save the MatchOverview to, extenstion included.</param>
+            <param name="CustomHost">Add the name of the person hosting the custom lobby</param>
+            <param name="FriendlyName">Add the FriendlyName string</param>
+            <param name="LengthInMS">Add the length of the replay in MS</param>
+            <param name="MapName">Add the name of the map</param>
+            <param name="Mode">Add the mode (will be "custom" in custom games)</param>
+            <param name="NetworkVerison">Add the network verison</param>
+            <param name="RecordingUserIDMD5">Add the MD5 hash of the recording user</param>
+            <param name="RecordingUserPUBGName">Add the PUBG name of the recording user</param>
+            <param name="ServerID">Add the server ID the replay was created on</param>
+            <param name="ServerType">Add if the server was official or not</param>
+            <param name="TimestampUTC">Add the UTC time of when the replay was created</param>
+            <param name="TimestampPrecise">Add the Unix (Epoch) time of when the replay was created</param>
+            <param name="PlayerCount">Add the player count</param>
+            <param name="TeamCount">Add the number of teams</param>
+            <param name="NumTeammates">Add the number of teammates</param>
+            <param name="TeamID">Add the team numbe recording user's number</param>
+            <param name="RecordingUserStats">Add the recording user's stats</param>
+            <param name="RecordingUserTeammatesStats">Add the recording user's teammates stats</param>
+            <param name="EventLog">Add all knocks and kills the recording user could have seen</param>
+            <param name="SHA256ReplayHash">Add the SHA256 hash from ToZipFile</param>
+            <param name="ReplayStartTime">Add the unix time of when the replay started</param>
+        </member>
+        <member name="M:PUBGLibrary.Replay.Replay.Events">
+            <summary>
+            All kills and downs that happened within the 1KM circle of the recording player
+            </summary>
+            <returns>List of Kills and DBNOs</returns>
+        </member>
+        <member name="M:PUBGLibrary.Replay.Replay.ToZipFile(System.String)">
+            <summary>
+            Creates a zip file from the replay
+            </summary>
+            <param name="DestinationFileName">The zip file path to save the replay to</param>
+            <returns>SHA256 hash of the zipfile</returns>
+        </member>
+        <member name="T:PUBGLibrary.Replay.Weather">
+            <summary>
+            A list of weather types (Missing - fog/rain)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.Replay.Weather.Unknown">
+            <summary>
+            For unknown weather types
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.Replay.ReplaySummary">
+            <summary>
+            Used for storing data from the ReplaySummary file found in the replay files
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.Replay.ReplaySummary.Climate">
+            <summary>
+            The direct weather string from the ReplaySummary file
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.Replay.ReplaySummaryTeammate.LongestDistanceKillInCM">
+            <summary>
+            Longest kill by the player, in centimeters.
+            </summary>
+        </member>
+        <member name="P:PUBGLibrary.Replay.ReplaySummaryTeammate.LongestDistanceKillInM">
+            <summary>
+            Longest kill by the player, in meters.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.Replay.ReplaySummaryTeammate.TotalMovedDistanceInM">
+            <summary>
+            Total distance moved by the player, in meters.
+            </summary>
+        </member>
+        <member name="P:PUBGLibrary.Replay.ReplaySummaryTeammate.TotalMovedDistanceHumanReadable">
+            <summary>
+            Total distance moved by the player, in meters or kilometers.
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.GameMode">
+            <summary>
+            List of gamemodes in PUBG
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.GameMap">
+            <summary>
+            List of maps in PUBG
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.ServerType">
+            <summary>
+            List of server types in PUBG
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.ReplayInfo">
+            <summary>
+            Information from the PUBG .replayinfo file
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.LengthInMs">
+            <summary>
+            The length of the replay in miliseconds.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.NetworkVersion">
+            <summary>
+            The verison of UE4 netcode used when the replay was created.
+            </summary>
+            <remarks>
+            Dec. 25 2017 - Was 720898
+            </remarks>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.Changelist">
+            <summary>
+            Always 0, UE4 has it commented as “Engine changelist built from”.
+            </summary>
+            <remarks>
+            Has never changed since Dec. 25 2017
+            Update Mar. 7 2018 - Still 0
+            </remarks>
+        </member>
+        <member name="P:PUBGLibrary.ReplayInfo.FriendlyName">
+            <summary>
+            A string containing multipe values.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.MatchID">
+            <summary>
+            The Match ID of the match, used for looking up the match using the API
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ServerType">
+            <summary>
+            The ServerType (Official, Custom, etc).
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ServerID">
+            <summary>
+            The server ID of the server the replay was created on.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.CustomHost">
+            <summary>
+            If CustomHost is set, it will appear here
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.DemoFileLastOffset">
+            <summary>
+            The size of the replay in bytes.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.SizeInBytes">
+            <summary>
+            Always 0, never used.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.TimeStamp">
+            <summary>
+            The Unix time (Epoch) of when the replay was created
+            </summary>
+        </member>
+        <member name="P:PUBGLibrary.ReplayInfo.ReplayStartTime">
+            <summary>
+            When the replay started in Unix time (Epoch)
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.TimeStampISO">
+            <summary>
+            The Datetime of when the replay was created in ISO format
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.IsLive">
+            <summary>
+            Never used, always false.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.IsIncomplete">
+            <summary>
+            Never used, always false.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.IsServerRecording">
+            <summary>
+            Never used, always false. Probably used server-side.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ShouldKeep">
+            <summary>
+            If true, PUBG won't delete or allow the user to delete the replay.
+            </summary>
+            <remarks>
+            Add ability to toggle this
+            </remarks>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.Mode">
+            <summary>
+            The mode played in the replay file (duo, squad-fpp, etc).
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.RecordUserId">
+            <summary>
+            The recording user's SteamID64 in MD5 hash (Pre 1.0 replays just have the SteamID64).
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.RecordUserNickName">
+            <summary>
+            The recording user's PUBG name.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.MapName">
+            <summary>
+            The map the replay was recorded on
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.AllDeadOrWin">
+            <summary>
+            Always true, rare instances have causes this to be false
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.IsClip">
+            <summary>
+            If true, the replay is clipped for use in a report
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ClipLength">
+            <summary>
+            The length of the clip
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ClipStartTime">
+            <summary>
+            The time the clip starts
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ClipEndTime">
+            <summary>
+            The time the clip ends
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ClipTargetSteamID">
+            <summary>
+            The SteamID of the person being reported
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ClipTargetPUBGName">
+            <summary>
+            The PUBG name of the person being reported
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayInfo.ReplayReportToken">
+            <summary>
+            The replay report token
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.Token">
+            <summary>  
+             The full JSON Web Token, Base64 encoded in three parts.
+            </summary>  
+            <remarks>
+             The first part is the "Header" that contains the Algorithm and Type
+             The second part is the "Payload" that contains all of PUBG's Data (AccountID, MatchID, JWT_ID, NotBeforePrecise, ExpiresPrecise, and Issuer
+             The thrid part is the "Signature" which is Base64 encoded with a Base64 encoded sercert
+            </remarks>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.Algorithm">
+            <summary>
+            The Algorithm used to sign the JWT.
+            </summary>
+            <remarks>
+            PUBG uses HMAC SHA-256, HS256 in the file
+            </remarks>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.Type">
+            <summary>
+            The Header Parameter to identify that it's a JWT .
+            </summary>
+            <remarks>
+            PUBG uses this even though all current verisons of JWT ignore this
+            </remarks>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.AccountID">
+            <summary>
+            A internal PUBG Account ID, not the same as RecordUserId.
+            </summary>
+            <remarks>
+            Some account ID that seems unrelated to the SteamID (not a MD5 of it, etc)
+            </remarks>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.MatchID">
+            <summary>
+            The ID or FriendlyName of the match played in the replay.
+            </summary>
+            <remarks>
+            Same as MatchID in the Summary file and in the ReplayInfo file
+            </remarks>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.JWT_ID">
+            <summary>
+            Provides a unique identifier for the JWT.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.NotBeforePrecise">
+            <summary>
+            The Unix time (Epoch) of the start of when this token can be used.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.NotBefore">
+            <summary>
+            The local DateTime of the start of when this token can be used.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.ExpiresPrecise">
+            <summary>
+            The Unix time (Epoch) of the end of when this token can be used.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.Expires">
+            <summary>
+            The local DateTime of the end of when this token can be used.
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.Issuer">
+            <summary>
+            This identifies the principal that issued the JWT.
+            </summary>
+            <remarks>
+            prod-live for Public Builds
+            
+            </remarks>
+        </member>
+        <member name="F:PUBGLibrary.ReplayReportToken.Signature">
+            <summary>
+            The signature to signing the JWT in hex.
+            </summary>
+        </member>
+        <member name="T:PUBGLibrary.Utils.Utils">
+            <summary>
+            Utilities for use with the API and/or Replay System
+            </summary>
+        </member>
+        <member name="F:PUBGLibrary.Utils.Utils.default_replay_dir">
+            <summary>
+            The default replay directory for PUBG
+            </summary>
+        </member>
+        <member name="M:PUBGLibrary.Utils.Utils.UE4StringSerializer(System.String,System.Int32)">
+            <summary>
+            Reads and serializes the file in file_path with the option of shifting all bytes by the encoded_offset
+            </summary>
+            <param name="file_path">Path to a file to serialize</param>
+            <param name="encoded_offset">Shift all bytes by this amount</param>
+            <returns>A serialized string of the file</returns>
+        </member>
+        <member name="M:PUBGLibrary.Utils.Utils.GetDirectorySize(System.String)">
+            <summary>
+            Gets the size of a Directory
+            </summary>
+            <param name="directory">The path to the directory to get the size of</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.Utils.Utils.Base64Decode(System.String)">
+            <summary>
+            Decodes a Base64 string and returns the decoded string
+            </summary>
+            <param name="encoded">Base64 encoded string</param>
+            <returns>Decoded String</returns>
+        </member>
+        <member name="M:PUBGLibrary.Utils.Utils.Base64DecodeJSON(System.String)">
+            <summary>
+            Decodes Base64 encoded JSON and returns a JObject
+            </summary>
+            <param name="encodedJSON">Base64 encoded JSON</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.Utils.Utils.CreateMD5(System.String)">
+            <summary>
+            Creates a MD5 hash from a string and returns the hash in a string
+            </summary>
+            <param name="input">String to hash</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.Utils.Utils.ListReplays(System.String)">
+            <summary>
+            Generates a list of Replays
+            </summary>
+            <param name="replay_dir">Directory to read replays from</param>
+            <returns></returns>
+        </member>
+        <member name="M:PUBGLibrary.Utils.Utils.UploadToFTP(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Upload a file to a FTP server
+            </summary>
+            <param name="username">Username for the FTP server</param>
+            <param name="password">Password for the FTP server</param>
+            <param name="baseftpfolder">The base folder of where your going to upload</param>
+            <param name="localfolder">The folder path to the file</param>
+            <param name="localfile">The file name in the folther path</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
