@@ -219,5 +219,6 @@ C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapA
 C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\Pubg.Net.dll
 C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\PUBGLibrary.dll
-C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\PUBGLibrary.xml
 C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\obj\Debug\CircleHeatmapAnalysis.csproj.CircleHeatmapAnalysis.exe.config
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\PUBGLibrary.pdb
+C:\Projects\CircleHeatmap\CircleHeatmapAnalysis\PubgCircleHeatmap\CircleHeatmapAnalysis\bin\Debug\PUBGLibrary.dll.config

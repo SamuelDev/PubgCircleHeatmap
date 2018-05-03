@@ -11,6 +11,28 @@ using System.Diagnostics;
 
 namespace CircleHeatmapAnalysis
 {
+    public static class Extensions
+    {
+        public static void CreateNewOrUpdateExisting(
+        this IDictionary<string, int> map, string key, int value )
+        {
+            try
+            {
+                map[key] += value;
+            }
+            catch(Exception e )
+            {
+                map.Add( key, value );
+            }
+        }
+    }
+
+    public class Items
+    {
+        public int NumPackages { get; set; }
+        public Dictionary<string, int> ItemCounts { get; set; }
+    }
+
     class Program
     {
 
@@ -19,9 +41,46 @@ namespace CircleHeatmapAnalysis
             string ApiKey = "";
             ApiKey = File.ReadAllText( @"C:\Projects\CircleHeatmap\APIKey.txt" );
 
-            PUBGLibrary.API.API api = new PUBGLibrary.API.API(ApiKey);
-            List<string> matchSampleList = api.FetchMatchSamples();
+            int i = 1;
+            var req = new PUBGLibrary.API.APIRequest();
+            List<string> samples = req.RequestSamples( ApiKey, "pc-na" );
+
+            foreach(string s in samples )
+            {
+                var api = new PUBGLibrary.API.API(ApiKey);
+                var matchReq = api.RequestMatch( s, PUBGLibrary.API.PlatformRegionShard.PC_NA, false );
+
+                if ( matchReq.Match.CreatedAt?.Day > 2 && matchReq.Match.CreatedAt?.Month == 5 ) 
+                {
+
+                }
+                Console.WriteLine( i );
+                //File.WriteAllText( string.Format( @"Z:\PubgMatchData\MatchesNew\{0}.json", s ), matchReq.Match.BaseJSON );
+                //File.WriteAllText( string.Format( @"Z:\PubgMatchData\TelemetryNew\{0}.json", s ), matchReq.Telemetry.BaseJSON );
+            }
+
+            //int NumberOfCarePackages = 0;
+            //Dictionary<string, int> ItemCounts = new Dictionary<string, int>();
+
+            //int i = 1;
+            //foreach (var file in new DirectoryInfo( @"Z:\PubgMatchData\Telemetry" ).GetFiles() )
+            //{
+            //    var req = new PUBGLibrary.API.APIRequest();
+
+            //    var telemetry = req.TelemetryPhraser( File.ReadAllText( string.Format( file.FullName ) ) );
+
+            //    NumberOfCarePackages += telemetry.LogCarePackageSpawnList.Count;
+
+            //    telemetry.LogCarePackageSpawnList.ForEach(x=> x.CarePackage.Items.ForEach(c=> ItemCounts.CreateNewOrUpdateExisting(c.ItemID, 1) ) );
+            //    Console.WriteLine( i++ );
+            //}
+
+            //Items ite = new Items() { NumPackages = NumberOfCarePackages, ItemCounts = ItemCounts };
+            //File.WriteAllText( @"Z:\PubgMatchData\CarePackageResults.json", JsonConvert.SerializeObject( ite ) );
+
         }
+
+        
 
         public void GetFinalCircleData()
         {
