@@ -41,20 +41,25 @@ namespace CircleHeatmapAnalysis
             string ApiKey = "";
             ApiKey = File.ReadAllText( @"C:\Projects\CircleHeatmap\APIKey.txt" );
 
-            int i = 1;
+            int i = 33;
             var req = new PUBGLibrary.API.APIRequest();
             List<string> samples = req.RequestSamples( ApiKey, "pc-na" );
 
-            foreach(string s in samples )
+            foreach(string s in samples.Skip(32) )
             {
                 var api = new PUBGLibrary.API.API(ApiKey);
-                var matchReq = api.RequestMatch( s, PUBGLibrary.API.PlatformRegionShard.PC_NA, false );
+                var matchReq = api.RequestMatch( s, PUBGLibrary.API.PlatformRegionShard.PC_NA, true );
 
                 if ( matchReq.Match.CreatedAt?.Day > 2 && matchReq.Match.CreatedAt?.Month == 5 ) 
                 {
-
+                    File.WriteAllText( string.Format( @"Z:\PubgMatchData\MatchesNew\{0}.json", s ), matchReq.Match.BaseJSON );
+                    File.WriteAllText( string.Format( @"Z:\PubgMatchData\TelemetryNew\{0}.json", s ), matchReq.Telemetry.BaseJSON );
+                    Console.WriteLine( i++ );
                 }
-                Console.WriteLine( i );
+                if(i == 1000 )
+                {
+                    break;
+                }
                 //File.WriteAllText( string.Format( @"Z:\PubgMatchData\MatchesNew\{0}.json", s ), matchReq.Match.BaseJSON );
                 //File.WriteAllText( string.Format( @"Z:\PubgMatchData\TelemetryNew\{0}.json", s ), matchReq.Telemetry.BaseJSON );
             }
